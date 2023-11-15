@@ -9,7 +9,9 @@ const InputSearch = () => {
   const router = useRouter();
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!searchRef.current.value) return;
+
+    if (!searchRef.current.value || searchRef.current.value.trim() == "")
+      return;
     router.push(`/search/${searchRef.current.value}`);
   };
   return (

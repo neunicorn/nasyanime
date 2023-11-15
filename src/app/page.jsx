@@ -1,32 +1,42 @@
 import AnimeList from "@/components/AnimeList";
-import Link from "next/link";
+import {
+  getAnimeResponse,
+  getNestedAnimeResponse,
+  getRandomAnime,
+} from "@/libs/api";
 
 const Page = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`
+  const topAnime = await getAnimeResponse("/top/anime", "limit=5");
+  const seasonNow = await getAnimeResponse("/seasons/now", "limit=10");
+  let recomendedAnime = await getNestedAnimeResponse(
+    "/recommendations/anime",
+    "entry"
   );
-
-  const topAnime = await response.json();
-
+  recomendedAnime = { data: getRandomAnime(recomendedAnime, 10) };
   return (
-    <>
+    <main className="bg-slate-100 pb-12">
       {/* anime paling populer */}
       <section>
         <div className="container pt-6">
           <AnimeList
             api={topAnime}
             title={"Paling Populer"}
-            route={"/populer"}
+            route={"/popular"}
           />
         </div>
       </section>
       {/* anime paling baru */}
       <section className="mt-6">
         <div className="container pt-6">
-          <AnimeList api={topAnime} title={"Terbaru"} route={"/new"} />
+          <AnimeList api={seasonNow} title={"Terbaru"} route={"/new"} />
         </div>
       </section>
-    </>
+      <section className="mt-6">
+        <div className="container pt-6">
+          <AnimeList api={recomendedAnime} title={"Rekomendasi Anime"} />
+        </div>
+      </section>
+    </main>
   );
 };
 
