@@ -3,16 +3,14 @@ import Link from "next/link";
 import Header from "./Header";
 
 const AnimeList = ({ api, title, route }) => {
+  console.log(api.data);
+  console.error(api.data);
   return (
     <>
       {title || route ? <Header title={title} route={route} /> : null}
 
-      console.log(api.data);
-      console.error(api.data);
-
       <div className="grid xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4 py-6">
         {api.data?.map((data) => {
-            console.log(data);
           return (
             <div
               key={data.mal_id}
@@ -24,7 +22,7 @@ const AnimeList = ({ api, title, route }) => {
                     src={data.images.webp.image_url}
                     width={300}
                     height={200}
-                    alt="anime"
+                    alt={data.images.jpg.image_url}
                     className="img-container group-hover:scale-110 transition duration-500 ease-in-out"
                   />
                 </div>
