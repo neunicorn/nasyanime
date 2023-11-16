@@ -17,3 +17,4 @@ export const getRandomAnime = (arr, n) => {
   const data = shuffle.slice(0, n);
   return data;
 };
+
