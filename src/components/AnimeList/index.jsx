@@ -12,8 +12,8 @@ const AnimeList = ({ api, title, route }) => {
 
       <div className="grid xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4 py-6">
         {api.data?.map((data) => {
-          return (
             console.log(data);
+          return (
             <div
               key={data.mal_id}
               className="bg-white rounded overflow-hidden shadow-lg pb-2 group"
