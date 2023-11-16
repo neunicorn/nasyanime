@@ -1,12 +1,19 @@
-FROM node:20.9.0
+FROM node:18-alpine AS build
 
-WORKDIR /next
-
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
 COPY . .
-
-RUN npm install
 RUN npm run build
 
-ENV NEXT_PUBLIC_API_BASE_URL=https://api.jikan.moe/v4
+FROM node:18-alpine AS runtime
 
-CMD ['npm', 'run', 'start']
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+
+EXPOSE 3000
+USER node
+CMD ["npm", "start"]
