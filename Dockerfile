@@ -8,7 +8,8 @@ RUN npm install
 RUN npm build 
 
 ENV NEXT_PUBLIC_API_BASE_URL=https://api.jikan.moe/v4
+ENV PORT=3000
 
-EXPOSE NEXT_PUBLIC_API_BASE_URL
+EXPOSE 3000
 
 CMD ['npm', 'run', 'start']
