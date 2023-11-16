@@ -5,7 +5,7 @@ WORKDIR /next
 COPY . .
 
 RUN npm install
-RUN npm build 
+RUN npm run build
 
 ENV NEXT_PUBLIC_API_BASE_URL=https://api.jikan.moe/v4
 ENV PORT=3000
