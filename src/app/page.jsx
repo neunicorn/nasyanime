@@ -12,8 +12,6 @@ const Page = async () => {
     "/recommendations/anime",
     "entry"
   );
-  console.log(topAnime);
-  console.log(seasonNow);
   recomendedAnime = { data: getRandomAnime(recomendedAnime, 10) };
   return (
     <main className="bg-slate-100 pb-12">

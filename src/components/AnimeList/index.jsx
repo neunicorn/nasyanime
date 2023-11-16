@@ -3,8 +3,6 @@ import Link from "next/link";
 import Header from "./Header";
 
 const AnimeList = ({ api, title, route }) => {
-  console.log(api.data);
-  console.error(api.data);
   return (
     <>
       {title || route ? <Header title={title} route={route} /> : null}
@@ -22,7 +20,7 @@ const AnimeList = ({ api, title, route }) => {
                     src={data.images.webp.image_url}
                     width={300}
                     height={200}
-                    alt={data.images.jpg.image_url}
+                    alt={"Anime Image"}
                     className="img-container group-hover:scale-110 transition duration-500 ease-in-out"
                   />
                 </div>
