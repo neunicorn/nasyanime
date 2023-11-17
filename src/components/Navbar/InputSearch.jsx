@@ -19,7 +19,7 @@ const InputSearch = () => {
       <form onSubmit={handleSearch}>
         <input
           placeholder="cari anime..."
-          className="focus:outline-none focus:ring-primary focus:ring-1 text-slate-600 bg-slate-200 rounded-lg w-full  px-4 py-2"
+          className="invisible sm:visible focus:outline-none focus:ring-primary focus:ring-1 text-slate-600 bg-slate-200 rounded-lg w-full  px-4 py-2"
           ref={searchRef}
         />
         <button

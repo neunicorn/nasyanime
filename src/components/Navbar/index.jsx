@@ -1,8 +1,10 @@
-"use client";
 import Link from "next/link";
 import InputSearch from "./InputSearch";
+import UserActionButton from "./UserActionButton";
+import { authUserSession } from "@/libs/auth-libs";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const user = await authUserSession();
   return (
     <header className="bg-white top-0 left-0 w-full flex items-center z-10 border-b-[1px] border-slate-300">
       <div className="container">
@@ -11,6 +13,7 @@ const Navbar = () => {
             NasyaNime
           </Link>
           <InputSearch />
+          <UserActionButton user={user} />
         </div>
       </div>
     </header>

@@ -27,9 +27,11 @@ const AnimeList = ({ api, title, route }) => {
                 <h3 className="font-medium truncate px-2 mt-2 text-xs md:text-base text-slate-800">
                   {data.title}
                 </h3>
-                <p className="text-xs px-2 md:text-sm text-slate-500">
-                  Score: {data.score}
-                </p>
+                {data.score && (
+                  <p className="text-xs px-2 md:text-sm text-slate-500">
+                    Score: {data.score}
+                  </p>
+                )}
               </Link>
             </div>
           );
