@@ -9,7 +9,7 @@ export const getAnimeResponse = async (resource, query) => {
 
 export const getNestedAnimeResponse = async (resource, objProp) => {
   const response = await getAnimeResponse(resource);
-  return response.data.flatMap((item) => item.entry);
+  return response.data?.flatMap((item) => item.entry);
 };
 
 export const getRandomAnime = (arr, n) => {
@@ -17,4 +17,3 @@ export const getRandomAnime = (arr, n) => {
   const data = shuffle.slice(0, n);
   return data;
 };
-
