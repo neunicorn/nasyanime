@@ -9,9 +9,7 @@ export const getAnimeResponse = async (resource, query) => {
 
 export const getNestedAnimeResponse = async (resource, objProp) => {
   const response = await getAnimeResponse(resource);
-  return response.data
-    ? (response.data = response.data.flatMap((item) => item[objProp]))
-    : null;
+  return (response.data = response?.data.flatMap((item) => item[objProp]));
 };
 
 export const getRandomAnime = (arr, n) => {
