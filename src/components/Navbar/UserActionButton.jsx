@@ -15,7 +15,7 @@ const UserActionButton = ({ user }) => {
       <>
         <div>
           <Link href={"/users/dashboard"}>
-            <div className="bg-white shadow rounded flex justify-center items-center content-evenly gap-2 m-3 py-2">
+            <div className="bg-white shadow rounded flex justify-center items-center content-evenly gap-2 m-3 py-2 cursor-pointer">
               <Image
                 src={user?.image}
                 width={32}
@@ -26,15 +26,15 @@ const UserActionButton = ({ user }) => {
             </div>
           </Link>
         </div>
-        <div className="text-slate-700 m-3 py-2 rounded hover:bg-white">
+        <div className="text-slate-700 m-3 py-2 rounded hover:bg-white cursor-pointer">
           <Link href={"/users/dashboard"}>Dashboard</Link>
         </div>
-        <div className="text-slate-700 py-2 m-3 rounded hover:bg-white">
+        <div className="text-slate-700 py-2 m-3 rounded hover:bg-white cursor-pointer">
           <Link href={actionURL}>{actionLabel}</Link>
         </div>
       </>
     ) : (
-      <div className="text-slate-700 py-2 m3- rounded hover:bg-white">
+      <div className="text-slate-700 py-2 m3- rounded hover:bg-white cursor-pointer">
         <Link href={actionURL}>{actionLabel}</Link>
       </div>
     );
@@ -47,11 +47,8 @@ const UserActionButton = ({ user }) => {
   };
 
   return (
-    <div
-      className="relative rounded-full bg-slate-200 cursor-pointer"
-      onClick={onClickEvent}
-    >
-      <div className="w-10 rounded-full ring-1 ring-primary">
+    <div className="relative rounded-full bg-slate-200" onClick={onClickEvent}>
+      <div className="w-10 rounded-full ring-1 ring-primary cursor-pointer">
         <Image
           src={imageUser}
           className="w-full object-cover rounded-full"

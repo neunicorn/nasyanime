@@ -1,8 +1,13 @@
 import { authUserSession } from "@/libs/auth-libs";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const Page = async () => {
   const user = await authUserSession();
+  if (!user) {
+    redirect("/?warning=you name to login first");
+  }
+
   return (
     <div className="min-h-[90vh]">
       <h1>Dashboard</h1>
