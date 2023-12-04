@@ -10,7 +10,7 @@ const Page = async ({ params }) => {
   return (
     <>
       {/* anime paling populer */}
-      <section>
+      <section className="min-h-[90vh]">
         <div className="container py-6">
           <AnimeList
             api={searchAnime}

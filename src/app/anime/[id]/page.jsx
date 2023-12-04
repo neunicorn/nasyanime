@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  getAnimeResponse,
-  getNestedAnimeResponse,
-  getRandomAnime,
-} from "@/libs/api";
+import { getAnimeResponse, getRandomAnime } from "@/libs/api";
 import Image from "next/image";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Link from "next/link";

@@ -3,39 +3,101 @@ import Link from "next/link";
 import Image from "next/image";
 import defaultAvatar from "@/assets/img/default-user.png";
 import { useState } from "react";
+import {
+  GearSix,
+  Info,
+  SignIn,
+  SignOut,
+  Sun,
+  User,
+} from "@phosphor-icons/react";
 
 const UserActionButton = ({ user }) => {
   const [isShow, setIsShow] = useState("hidden");
-  const actionLabel = user ? "sign out" : "sign in";
+  const actionLabel = user ? "Sign Out" : "Sign In";
   const actionURL = user ? "/api/auth/signout" : "/api/auth/signin";
   const imageUser = user ? user.image : defaultAvatar;
 
   const OnClickRender = () => {
     const render = user ? (
       <>
-        <div>
-          <Link href={"/users/dashboard"}>
-            <div className="bg-white shadow rounded flex justify-center items-center content-evenly gap-2 m-3 py-2 cursor-pointer">
-              <Image
-                src={user?.image}
-                width={32}
-                height={32}
-                className="w-8 rounded-full object-cover"
-              />
-              <p className="text-sm">{user.name}</p>
+        <Link href={"/users/dashboard"}>
+          <div className="bg-white shadow rounded flex justify-center items-center content-evenly gap-3 m-3 py-3 cursor-pointer">
+            <Image
+              src={user?.image}
+              width={32}
+              height={32}
+              alt="avatar-image"
+              className="w-8 rounded-full object-cover"
+            />
+            <div>
+              <p className="text-base text-slate-800">{user.name}</p>
+              <p className="text-xs text-slate-600">@baehq12</p>
             </div>
-          </Link>
-        </div>
-        <div className="text-slate-700 m-3 py-2 rounded hover:bg-white cursor-pointer">
-          <Link href={"/users/dashboard"}>Dashboard</Link>
-        </div>
-        <div className="text-slate-700 py-2 m-3 rounded hover:bg-white cursor-pointer">
-          <Link href={actionURL}>{actionLabel}</Link>
-        </div>
+          </div>
+        </Link>
+
+        <Link className="w-full" href={"/users/dashboard"}>
+          <div className="text-slate-700 flex gap-4 items-center p-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <User size={24} />
+            <p>Dashboard</p>
+          </div>
+        </Link>
+        <Link className="w-full" href={actionURL}>
+          <div className="text-slate-700 flex gap-4 items-center p-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <SignOut size={24} />
+            <p>{actionLabel}</p>
+          </div>
+        </Link>
+        <div className="border"></div>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <Sun size={24} />
+            <p>Theme : Light</p>
+          </div>
+        </Link>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <GearSix size={24} />
+            <p>Settings</p>
+          </div>
+        </Link>
+        <div className="border"></div>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <Info size={24} />
+            <p>Info</p>
+          </div>
+        </Link>
       </>
     ) : (
-      <div className="text-slate-700 py-2 m3- rounded hover:bg-white cursor-pointer">
-        <Link href={actionURL}>{actionLabel}</Link>
+      <div className="w-[250px]">
+        <Link className="w-full" href={actionURL}>
+          <div className="text-slate-700 flex gap-4 items-center p-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <SignIn size={24} />
+            <p>{actionLabel}</p>
+          </div>
+        </Link>
+        <div className="border"></div>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <Sun size={24} />
+            <p>Theme : Light</p>
+          </div>
+        </Link>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <GearSix size={24} />
+            <p>Settings</p>
+          </div>
+        </Link>
+        <div className="border"></div>
+        <Link className="w-full" href={"/"}>
+          <div className="text-slate-700 flex gap-4 items-center py-2 px-3 my-3 rounded hover:bg-white cursor-pointer">
+            <Info size={24} />
+            <p>Info</p>
+          </div>
+        </Link>
       </div>
     );
 
